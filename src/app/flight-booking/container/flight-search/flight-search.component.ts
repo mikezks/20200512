@@ -14,6 +14,10 @@ export class FlightSearchComponent implements OnInit, OnDestroy {
   selectedFlight: Flight;
   //subscriptions: Subscription;
   //timer$: Observable<number>;
+  basket: object = {
+    '3': true,
+    '5': true
+  };
 
   get flights(): Flight[] {
     return this.flightService.flights;
