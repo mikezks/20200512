@@ -15,6 +15,7 @@ export class FlightSearchComponent implements OnInit, OnDestroy {
   //flights: Flight[] = [];
   selectedFlight: Flight;
   //subscriptions: Subscription;
+  //timer$: Observable<number>;
 
   get flights(): Flight[] {
     return this.flightService.flights;
@@ -23,11 +24,15 @@ export class FlightSearchComponent implements OnInit, OnDestroy {
   constructor(private flightService: FlightService) { }
 
   ngOnInit(): void {
-    /*this.subscriptions = timer(0, 1000)
+    /*
+     this.timer$ = timer(0, 1000)
       .pipe(
         take(5)
       )
-      .subscribe(console.log);*/
+
+     this.subscriptions =
+      this.timer$
+        .subscribe(console.log);*/
   }
 
   search(): void {

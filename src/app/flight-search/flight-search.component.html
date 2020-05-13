@@ -5,6 +5,11 @@
   </div>
 
   <div class="content">
+    <!-- <p *ngIf="{
+      timer: timer$ | async
+    } as compData">
+      {{ compData.timer }}
+    </p> -->
 
     <form>
       <div class="form-group">
@@ -25,6 +30,7 @@
   </div>
 </div>
 
+<!-- <div class="card" *ngIf="{ flights: flights$ | async } as compData"> -->
 <div class="card" *ngIf="flights?.length">
 
   <table class="table table-condensed">
@@ -42,8 +48,8 @@
       *ngFor="let flight of flights"
       [class.active]="selectedFlight === flight">
       <td>{{ flight.id }}</td>
-      <td>{{ flight.from | city }}</td>
-      <td>{{ flight.to | city:'short' }}</td>
+      <td>{{ flight.from | city | async }}</td>
+      <td>{{ flight.to | city:'short' | async }}</td>
       <td>{{ flight.date | date:'dd.MM.yyyy HH:mm' }}</td>
       <td>
         <a
