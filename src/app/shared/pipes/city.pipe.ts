@@ -7,7 +7,7 @@ import {delay, startWith} from "rxjs/operators";
 })
 export class CityPipe implements PipeTransform {
 
-  transform(value: string, fmt?: string): Observable<string> {
+  transform(value: string | number, fmt?: string): Observable<string | number> {
     let short, long;
 
     switch (value) {
@@ -39,5 +39,4 @@ export class CityPipe implements PipeTransform {
 
     return of(long);
   }
-
 }

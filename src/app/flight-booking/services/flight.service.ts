@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
-import {Flight} from "../entities/flight";
+import {Flight} from "../../entities/flight";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {tap} from "rxjs/operators";
-import {environment} from "../../environments/environment";
+import {environment} from "../../../environments/environment";
+import {AbstractFlightService} from "./abstract-flight.service";
 
 export const API_URL = 'http://www.angular.at/api/flight';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class FlightService {
+@Injectable()
+export class FlightService implements AbstractFlightService {
   flights: Flight[] = [];
 
   constructor(private http: HttpClient) { }

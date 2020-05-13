@@ -1,8 +1,6 @@
 import {Component, OnDestroy, OnInit, Optional} from '@angular/core';
-import {Flight} from "../entities/flight";
-import {FlightService} from "./flight.service";
-import {Subscription, timer} from "rxjs";
-import {take} from "rxjs/operators";
+import {Flight} from "../../../entities/flight";
+import {AbstractFlightService} from "../../services/abstract-flight.service";
 
 @Component({
   selector: 'app-flight-search',
@@ -21,7 +19,7 @@ export class FlightSearchComponent implements OnInit, OnDestroy {
     return this.flightService.flights;
   }
 
-  constructor(private flightService: FlightService) { }
+  constructor(private flightService: AbstractFlightService) { }
 
   ngOnInit(): void {
     /*
