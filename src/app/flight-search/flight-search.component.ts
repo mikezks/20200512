@@ -16,7 +16,7 @@ export class FlightSearchComponent implements OnInit, OnDestroy {
   selectedFlight: Flight;
   //subscriptions: Subscription;
 
-  get flights() {
+  get flights(): Flight[] {
     return this.flightService.flights;
   }
 

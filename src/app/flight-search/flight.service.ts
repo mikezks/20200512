@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import {Observable, of} from "rxjs";
+import {Observable} from "rxjs";
 import {Flight} from "../entities/flight";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import {catchError, retry, tap} from "rxjs/operators";
+import {tap} from "rxjs/operators";
+import {environment} from "../../environments/environment";
 
 export const API_URL = 'http://www.angular.at/api/flight';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FlightService {
   flights: Flight[] = [];
