@@ -16,8 +16,12 @@
           <div class="content">
             </div>
         </div>-->
+        <div class="form-group">
+          <button
+            class="btn btn-default" (click)="showComponent = !showComponent">toggle View</button>
+        </div>
 
-        <app-flight-search></app-flight-search>
+        <app-flight-search *ngIf="showComponent"></app-flight-search>
 
       </div>
   </div>
