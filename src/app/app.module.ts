@@ -22,7 +22,7 @@ import {RouterModule} from "@angular/router";
     HttpClientModule,
     RouterModule.forRoot(APP_ROUTES),
     CoreModule,
-    FlightBookingModule
+    // FlightBookingModule <- no import, because of Lazy Loading
   ],
   bootstrap: [
     AppComponent
