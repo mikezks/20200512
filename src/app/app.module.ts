@@ -10,6 +10,8 @@ import { FlightSearchComponent } from './flight-booking/container/flight-search/
 import { CityPipe } from './shared/pipes/city.pipe';
 import {CoreModule} from "./core/core.module";
 import {FlightBookingModule} from "./flight-booking/flight-booking.module";
+import {APP_ROUTES} from "./app.routes";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import {FlightBookingModule} from "./flight-booking/flight-booking.module";
   imports: [
     BrowserModule,
     HttpClientModule,
+    RouterModule.forRoot(APP_ROUTES),
     CoreModule,
     FlightBookingModule
   ],

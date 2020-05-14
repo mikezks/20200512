@@ -1,0 +1,88 @@
+<div class="card">
+
+  <div class="header">
+    <h2 class="title">Flight Edit</h2>
+  </div>
+
+  <div class="content">
+    <form [formGroup]="editForm">
+      <div class="form-group">
+        <label>Id:</label>
+        <input formControlName="id" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label>From:</label>
+        <input formControlName="from" class="form-control">
+      </div>
+
+      <div
+        class="alert alert-danger"
+        *ngIf="editForm?.controls['from']?.invalid">
+        "From"-input is invalid.
+      </div>
+
+      <div
+        class="alert alert-danger"
+        *ngIf="editForm?.controls['from']?.hasError('city')">
+        City is not whitelisted.<br>
+        Allowed: {{
+        editForm?.controls['from']?.errors?.city['validCities'].join(', ')
+        }}.
+      </div>
+
+      <pre
+        class="alert alert-danger"
+        *ngIf="editForm?.controls['from']?.errors">Errors:
+        {{
+        editForm?.controls['from']?.errors | json
+        }}</pre>
+
+      <div class="form-group">
+        <label>To:</label>
+        <input formControlName="to" class="form-control">
+      </div>
+
+      <div
+        class="alert alert-danger"
+        *ngIf="editForm?.controls['to']?.invalid">
+        "To"-input is invalid.
+      </div>
+
+      <div
+        class="alert alert-danger"
+        *ngIf="editForm?.controls['to']?.hasError('city')">
+        City is not whitelisted.<br>
+        Allowed: {{
+        editForm?.controls['to']?.errors?.city['validCities'].join(', ')
+        }}.
+      </div>
+
+      <pre
+        class="alert alert-danger"
+        *ngIf="editForm?.controls['to']?.errors">Errors:
+        {{
+        editForm?.controls['to']?.errors | json
+        }}</pre>
+
+      <div class="form-group">
+        <label>Date:</label>
+        <input formControlName="date" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <button (click)="save()" class="btn btn-default">Save</button>
+      </div>
+
+      <div class="form-group">
+        <a
+          class="btn btn-default"
+          [routerLink]="[ '../../flight-edit', this.id + 1 ]">
+          next
+        </a>
+      </div>
+
+    </form>
+  </div>
+
+</div>
