@@ -35,7 +35,21 @@
     *ngFor="let flight of flights"
     class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 
-    <app-flight-card [item]="flight" [selected]="basket[flight.id]"></app-flight-card>
+    <app-flight-card
+      [item]="flight"
+      [selected]="basket[flight.id]"
+      (selectedChange)="basket[flight.id] = $event">
 
+      <h4 class="my-flight-header">My Flight Card</h4>
+      <span>My Content</span>
+
+    </app-flight-card>
+
+  </div>
+</div>
+
+<div class="card">
+  <div class="content">
+    <pre>{{ basket | json }}</pre>
   </div>
 </div>

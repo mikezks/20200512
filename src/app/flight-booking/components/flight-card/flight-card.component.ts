@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Flight} from "../../../entities/flight";
 
 @Component({
@@ -9,6 +9,7 @@ import {Flight} from "../../../entities/flight";
 export class FlightCardComponent implements OnInit {
   @Input() item: Flight;
   @Input() selected: boolean;
+  @Output() selectedChange = new EventEmitter<boolean>();
 
   constructor() { }
 
@@ -17,6 +18,7 @@ export class FlightCardComponent implements OnInit {
 
   toggleSelection(): void {
     this.selected = !this.selected;
+    this.selectedChange.emit(this.selected);
   }
 
 }
