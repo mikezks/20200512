@@ -76,6 +76,12 @@
 
       <div class="form-group">
         <a
+          *ngIf="id > 0"
+          class="btn btn-default"
+          [routerLink]="[ '../../flight-edit', this.id - 1 ]">
+          previous
+        </a>
+        <a
           class="btn btn-default"
           [routerLink]="[ '../../flight-edit', this.id + 1 ]">
           next
