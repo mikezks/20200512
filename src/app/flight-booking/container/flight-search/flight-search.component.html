@@ -11,19 +11,80 @@
       {{ compData.timer }}
     </p> -->
 
-    <form>
+    <form #filterForm="ngForm">
       <div class="form-group">
         <label>From:</label>
-        <input [(ngModel)]="from" name="from" class="form-control">
+        <input
+          [(ngModel)]="from"
+          name="from"
+          class="form-control"
+          required
+          minlength="3"
+          [city]="validCities">
       </div>
+
+      <div
+        class="alert alert-danger"
+        *ngIf="filterForm?.controls['from']?.invalid">
+        "From"-input is invalid.
+      </div>
+
+      <div
+        class="alert alert-danger"
+        *ngIf="filterForm?.controls['from']?.hasError('city')">
+        City is not whitelisted.<br>
+        Allowed: {{
+          filterForm?.controls['from']?.errors?.city['validCities'].join(', ')
+        }}.
+      </div>
+
+      <pre
+        class="alert alert-danger"
+        *ngIf="filterForm?.controls['from']?.errors">Errors:
+{{
+        filterForm?.controls['from']?.errors | json
+      }}</pre>
+
       <div class="form-group">
         <label>To:</label>
-        <input [(ngModel)]="to" name="to" class="form-control">
+        <input
+          [(ngModel)]="to"
+          name="to"
+          class="form-control"
+          required
+          minlength="3"
+          [city]="validCities">
       </div>
+
+      <div
+        class="alert alert-danger"
+        *ngIf="filterForm?.controls['to']?.invalid">
+        "To"-input is invalid.
+      </div>
+
+      <div
+        class="alert alert-danger"
+        *ngIf="filterForm?.controls['to']?.hasError('city')">
+        City is not whitelisted.<br>
+        Allowed: {{
+        filterForm?.controls['to']?.errors?.city['validCities'].join(', ')
+        }}.
+      </div>
+
+      <pre
+        class="alert alert-danger"
+        *ngIf="filterForm?.controls['to']?.errors">Errors:
+{{
+          filterForm?.controls['to']?.errors | json
+        }}</pre>
 
       <div class="form-group">
         <button
-          class="btn btn-default" (click)="search()">Search</button>
+          [disabled]="!filterForm?.valid"
+          class="btn btn-default"
+          (click)="search()">
+          Search
+        </button>
       </div>
     </form>
 

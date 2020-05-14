@@ -18,6 +18,12 @@ export class FlightSearchComponent implements OnInit, OnDestroy {
     '3': true,
     '5': true
   };
+  validCities = [
+    'Graz',
+    'Hamburg',
+    'Mallorca',
+    'Amsterdam'
+  ];
 
   get flights(): Flight[] {
     return this.flightService.flights;
